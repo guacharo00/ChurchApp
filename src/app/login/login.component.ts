@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgModel } from '@angular/forms';
+import { UsuarioService } from '../services/service.index';
 
 declare function init_pluging()
 
@@ -10,16 +12,23 @@ declare function init_pluging()
 })
 export class LoginComponent implements OnInit {
 
-  constructor( public router: Router ) { }
+  recuerdame: boolean = false;
+
+  constructor( public router: Router,
+               public _usuarioService: UsuarioService  
+      ){ }
 
   ngOnInit() {
     init_pluging()
   }
 
-  ingresar(){
-    this.router.navigate(['/dashboard'])
-    console.log('Ingresando');
+  ingresar( forma: NgModel ){
+
+    console.log(forma.valid);
+    console.log(forma.value);
+
     
+    // this.router.navigate(['/dashboard'])
   }
 
 }
